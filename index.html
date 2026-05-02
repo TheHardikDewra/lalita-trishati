@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Interactive guide to Sri Lalita Trishati - 300 sacred names of the Divine Mother, structured upon the Pañcadaśākṣarī mantra">
+  <meta name="description" content="Interactive guide to Sri Lalita Trishati - the 300 sacred names of the Divine Mother Lalita Tripurasundari, with full Sanskrit, IAST, meanings, and chant mode">
   <meta name="theme-color" content="#0f0f0f">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta property="og:title" content="Sri Lalita Trishati">
-  <meta property="og:description" content="300 sacred names of Lalita Tripurasundari, structured upon the 15-syllabled Pañcadaśākṣarī mantra. Sanskrit, IAST, meanings, audio, sadhana tracker.">
+  <meta property="og:description" content="300 sacred names of Lalita Tripurasundari, with Sanskrit, IAST, meanings, audio, and sadhana tracker.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lalita-trishati.vercel.app/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Sri Lalita Trishati">
-  <meta name="twitter:description" content="300 sacred names of the Divine Mother, structured on the Pañcadaśākṣarī mantra.">
+  <meta name="twitter:description" content="300 sacred names of the Divine Mother.">
   <title>Sri Lalita Trishati Stotra</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -34,9 +34,8 @@
     </div>
     <nav class="nav-tabs" role="tablist">
       <a href="#home" class="nav-tab active" role="tab" data-view="home">Home</a>
-      <a href="#syllables" class="nav-tab" role="tab" data-view="syllables">Syllables</a>
-      <a href="#names" class="nav-tab" role="tab" data-view="names">Names</a>
       <a href="#verses" class="nav-tab" role="tab" data-view="verses">Verses</a>
+      <a href="#names" class="nav-tab" role="tab" data-view="names">Names</a>
       <a href="#practice" class="nav-tab" role="tab" data-view="practice">Practice</a>
       <a href="#chant" class="nav-tab" role="tab" data-view="chant">Chant</a>
     </nav>
@@ -46,7 +45,7 @@
     <!-- Home View -->
     <section id="view-home" class="view">
       <div class="welcome-section">
-        <p class="welcome-text">The Lalita Trishati is a sacred hymn from the Brahmāṇḍa Purāṇa, revealed by Lord Hayagrīva to the sage Agastya at the express command of the Divine Mother herself. It contains 300 names of Lalitā Tripurasundarī, structured directly upon Her fifteen-syllabled Pañcadaśākṣarī mantra - twenty names blossoming from each of the fifteen syllables. While the Lalitā Sahasranāma is described as the fragrance of the flower, the Trishati is the flower itself - more secret, more compact, the Goddess's own wealth.</p>
+        <p class="welcome-text">The Lalita Trishati is a sacred hymn from the Brahmāṇḍa Purāṇa, revealed by Lord Hayagrīva to the sage Agastya at the express command of the Divine Mother herself. It contains 300 names of Lalitā Tripurasundarī, arranged in 59 verses across three sections. While the Lalitā Sahasranāma is described as the fragrance of the flower, the Trishati is the flower itself - more secret, more compact, the Goddess's own wealth. The text is described in its own phala śruti as <em>sarva-pūrti-karī</em> - the fulfiller of all completeness.</p>
       </div>
 
       <div class="stats-grid">
@@ -55,44 +54,16 @@
           <span class="stat-label">Divine Names</span>
         </div>
         <div class="stat-card">
-          <span class="stat-number">15</span>
-          <span class="stat-label">Syllables</span>
+          <span class="stat-number">59</span>
+          <span class="stat-label">Verses</span>
         </div>
         <div class="stat-card">
           <span class="stat-number">3</span>
-          <span class="stat-label">Kūṭas</span>
+          <span class="stat-label">Sections</span>
         </div>
         <div class="stat-card">
           <span class="stat-number" id="stat-learned">0</span>
           <span class="stat-label">Names Learned</span>
-        </div>
-      </div>
-
-      <div class="panchadashi-section">
-        <h2 class="section-title">The Pañcadaśākṣarī Mantra</h2>
-        <div class="panchadashi-card">
-          <p class="panchadashi-intro">Each of the 15 syllables generates 20 names. The mantra is structured in three kūṭas (groupings):</p>
-          <div class="kuta-row">
-            <div class="kuta-mini">
-              <div class="kuta-mini-label">Vāgbhava</div>
-              <div class="kuta-mini-syllables">क ए ई ल ह्रीं</div>
-              <div class="kuta-mini-iast">ka e ī la hrīṃ</div>
-              <div class="kuta-mini-count">Names 1-100</div>
-            </div>
-            <div class="kuta-mini">
-              <div class="kuta-mini-label">Kāmarāja</div>
-              <div class="kuta-mini-syllables">ह स क ह ल ह्रीं</div>
-              <div class="kuta-mini-iast">ha sa ka ha la hrīṃ</div>
-              <div class="kuta-mini-count">Names 101-200</div>
-            </div>
-            <div class="kuta-mini">
-              <div class="kuta-mini-label">Śakti</div>
-              <div class="kuta-mini-syllables">स क ल ह्रीं</div>
-              <div class="kuta-mini-iast">sa ka la hrīṃ</div>
-              <div class="kuta-mini-count">Names 201-300</div>
-            </div>
-          </div>
-          <a href="#syllables" class="panchadashi-link">Explore all 15 syllables →</a>
         </div>
       </div>
 
@@ -185,20 +156,10 @@
       </div>
 
       <div class="quick-actions">
-        <a href="#syllables" class="action-btn">Explore Syllables</a>
+        <a href="#verses" class="action-btn">Read Verse-by-Verse</a>
         <a href="#names" class="action-btn">Browse All Names</a>
         <a href="#practice" class="action-btn">Start Practice</a>
         <a href="#chant" class="action-btn">Chant Mode</a>
-      </div>
-    </section>
-
-    <!-- Syllables View -->
-    <section id="view-syllables" class="view" hidden>
-      <div class="syllables-intro">
-        <p>The Pañcadaśākṣarī mantra of Devī is built from fifteen sacred syllables, divided into three kūṭas. Each syllable generates twenty names of the Trishati. Click any syllable to study its names.</p>
-      </div>
-      <div id="kutas-list">
-        <!-- Filled by JS -->
       </div>
     </section>
 
@@ -209,28 +170,28 @@
           <input type="text" id="names-search" placeholder="Search by name, meaning, or number..." autocomplete="off" spellcheck="false">
         </div>
         <div class="filter-row">
-          <select id="range-filter" aria-label="Filter by syllable">
+          <select id="range-filter" aria-label="Filter by section">
             <option value="all">All Names</option>
-            <optgroup label="Vāgbhava Kūṭa">
-              <option value="syl-0">Ka (1-20)</option>
-              <option value="syl-1">E (21-40)</option>
-              <option value="syl-2">Ī (41-60)</option>
-              <option value="syl-3">La (61-80)</option>
-              <option value="syl-4">Hrīṃ (81-100)</option>
+            <optgroup label="By Section">
+              <option value="kuta-0">First Section (1-100)</option>
+              <option value="kuta-1">Second Section (101-200)</option>
+              <option value="kuta-2">Third Section (201-300)</option>
             </optgroup>
-            <optgroup label="Kāmarāja Kūṭa">
-              <option value="syl-5">Ha (101-120)</option>
-              <option value="syl-6">Sa (121-140)</option>
-              <option value="syl-7">Ka (141-160)</option>
-              <option value="syl-8">Ha (161-180)</option>
-              <option value="syl-9">La (181-200)</option>
-              <option value="syl-10">Hrīṃ (201-220)</option>
+            <optgroup label="By Verse Range">
+              <option value="verse-1-10">Verses 1-10</option>
+              <option value="verse-11-20">Verses 11-20</option>
+              <option value="verse-21-30">Verses 21-30</option>
+              <option value="verse-31-40">Verses 31-40</option>
+              <option value="verse-41-50">Verses 41-50</option>
+              <option value="verse-51-59">Verses 51-59</option>
             </optgroup>
-            <optgroup label="Śakti Kūṭa">
-              <option value="syl-11">Sa (221-240)</option>
-              <option value="syl-12">Ka (241-260)</option>
-              <option value="syl-13">La (261-280)</option>
-              <option value="syl-14">Hrīṃ (281-300)</option>
+            <optgroup label="By Name Range">
+              <option value="num-1-50">Names 1-50</option>
+              <option value="num-51-100">Names 51-100</option>
+              <option value="num-101-150">Names 101-150</option>
+              <option value="num-151-200">Names 151-200</option>
+              <option value="num-201-250">Names 201-250</option>
+              <option value="num-251-300">Names 251-300</option>
             </optgroup>
           </select>
           <select id="status-filter" aria-label="Filter by status">
@@ -281,27 +242,18 @@
             <option value="all">All Names</option>
             <option value="unlearned">Unlearned Only</option>
             <option value="due">Due Today (SRS)</option>
-            <optgroup label="By Kūṭa">
-              <option value="kuta-0">Vāgbhava Kūṭa (1-100)</option>
-              <option value="kuta-1">Kāmarāja Kūṭa (101-200)</option>
-              <option value="kuta-2">Śakti Kūṭa (201-300)</option>
+            <optgroup label="By Section">
+              <option value="kuta-0">First Section (1-100)</option>
+              <option value="kuta-1">Second Section (101-200)</option>
+              <option value="kuta-2">Third Section (201-300)</option>
             </optgroup>
-            <optgroup label="By Syllable">
-              <option value="syl-0">Ka (1-20)</option>
-              <option value="syl-1">E (21-40)</option>
-              <option value="syl-2">Ī (41-60)</option>
-              <option value="syl-3">La (61-80)</option>
-              <option value="syl-4">Hrīṃ (81-100)</option>
-              <option value="syl-5">Ha (101-120)</option>
-              <option value="syl-6">Sa (121-140)</option>
-              <option value="syl-7">Ka (141-160)</option>
-              <option value="syl-8">Ha (161-180)</option>
-              <option value="syl-9">La (181-200)</option>
-              <option value="syl-10">Hrīṃ (201-220)</option>
-              <option value="syl-11">Sa (221-240)</option>
-              <option value="syl-12">Ka (241-260)</option>
-              <option value="syl-13">La (261-280)</option>
-              <option value="syl-14">Hrīṃ (281-300)</option>
+            <optgroup label="By Verse Range">
+              <option value="verse-1-10">Verses 1-10</option>
+              <option value="verse-11-20">Verses 11-20</option>
+              <option value="verse-21-30">Verses 21-30</option>
+              <option value="verse-31-40">Verses 31-40</option>
+              <option value="verse-41-50">Verses 41-50</option>
+              <option value="verse-51-59">Verses 51-59</option>
             </optgroup>
           </select>
         </div>

@@ -212,20 +212,17 @@
     const h = window.location.hash.replace('#', '').trim();
     const nameMatch = h.match(/^name\/(\d+)$/);
     if (nameMatch) return { view: 'names', deepLink: parseInt(nameMatch[1], 10) };
-    const sylMatch = h.match(/^syllable\/(\d+)$/);
-    if (sylMatch) return { view: 'names', sylDeepLink: parseInt(sylMatch[1], 10) };
-    const view = ['home', 'syllables', 'names', 'verses', 'practice', 'chant'].includes(h) ? h : 'home';
+    const view = ['home', 'names', 'verses', 'practice', 'chant'].includes(h) ? h : 'home';
     return { view, deepLink: null };
   }
 
   function navigate(viewOrObj) {
-    let view, deepLink, sylDeepLink;
+    let view, deepLink;
     if (typeof viewOrObj === 'string') {
       view = viewOrObj;
     } else {
       view = viewOrObj.view;
       deepLink = viewOrObj.deepLink;
-      sylDeepLink = viewOrObj.sylDeepLink;
     }
 
     STATE.currentView = view;
@@ -237,15 +234,7 @@
     });
 
     if (view === 'home') renderHome();
-    else if (view === 'syllables') renderSyllables();
-    else if (view === 'names') {
-      if (sylDeepLink !== undefined && sylDeepLink !== null) {
-        STATE.nameRangeFilter = 'syl-' + sylDeepLink;
-        const sel = document.getElementById('range-filter');
-        if (sel) sel.value = STATE.nameRangeFilter;
-      }
-      initNames(deepLink);
-    }
+    else if (view === 'names') initNames(deepLink);
     else if (view === 'verses') renderVerse(STATE.currentVerse);
     else if (view === 'practice') initPractice();
     else if (view === 'chant') initChant();
@@ -365,7 +354,7 @@
     const notd = getNameOfTheDay();
     const notdEl = document.getElementById('name-of-day');
     notdEl.innerHTML = `
-      <div class="notd-number">Name #${notd.number} - ${escHtml(DATA.syllables[notd.syllable].iast)} group</div>
+      <div class="notd-number">Name #${notd.number} - Verse ${notd.verse}</div>
       <div class="notd-sanskrit">${notd.devanagari}</div>
       <div class="notd-translit">${escHtml(notd.iast)}</div>
       <div class="notd-meaning">${escHtml(notd.meaning)}</div>
@@ -403,50 +392,6 @@
     toggle.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
   });
 
-  // ---- Syllables View ----
-  function renderSyllables() {
-    const container = document.getElementById('kutas-list');
-    if (container.children.length > 0) {
-      // Refresh learned counts only
-      DATA.syllables.forEach(syl => {
-        const el = container.querySelector(`[data-syl="${syl.index}"] .syl-progress`);
-        if (el) {
-          const learnedCount = getNamesBySyllable(syl.index).filter(n => isLearned(n.number)).length;
-          el.textContent = `${learnedCount} / 20 learned`;
-        }
-      });
-      return;
-    }
-
-    let html = '';
-    DATA.kutas.forEach(kuta => {
-      html += `
-        <div class="kuta-section" data-kuta="${kuta.index}">
-          <div class="kuta-header">
-            <h2 class="kuta-name">${escHtml(kuta.name)} <span class="kuta-deva">${kuta.devanagari}</span></h2>
-            <p class="kuta-description">${escHtml(kuta.description)}</p>
-          </div>
-          <div class="syllables-grid">
-      `;
-      kuta.syllables.forEach(sylIdx => {
-        const syl = DATA.syllables[sylIdx];
-        const names = getNamesBySyllable(sylIdx);
-        const learnedCount = names.filter(n => isLearned(n.number)).length;
-        html += `
-          <a class="syllable-card" href="#syllable/${sylIdx}" data-syl="${sylIdx}">
-            <div class="syl-deva">${syl.devanagari}</div>
-            <div class="syl-iast">${escHtml(syl.iast)}</div>
-            <div class="syl-range">Names ${syl.nameStart}-${syl.nameEnd}</div>
-            <div class="syl-meaning">${escHtml(syl.meaning)}</div>
-            <div class="syl-progress">${learnedCount} / 20 learned</div>
-          </a>
-        `;
-      });
-      html += `</div></div>`;
-    });
-    container.innerHTML = html;
-  }
-
   // ---- Names View ----
   let filteredNames = [];
   let namesScrollSentinel = null;
@@ -454,8 +399,6 @@
   function initNames(deepLinkNum) {
     STATE.renderOffset = 0;
     STATE.expandedCard = null;
-    const sel = document.getElementById('range-filter');
-    if (sel && sel.value !== STATE.nameRangeFilter) sel.value = STATE.nameRangeFilter;
     filterAndRenderNames();
     if (deepLinkNum && nameMap.has(deepLinkNum)) {
       scrollToAndExpandName(deepLinkNum);
@@ -490,12 +433,15 @@
     let results = DATA.names;
 
     if (filter !== 'all') {
-      if (filter.startsWith('syl-')) {
-        const sylIdx = parseInt(filter.slice(4), 10);
-        results = results.filter(n => n.syllable === sylIdx);
-      } else if (filter.startsWith('kuta-')) {
+      if (filter.startsWith('kuta-')) {
         const kutaIdx = parseInt(filter.slice(5), 10);
         results = results.filter(n => n.kuta === kutaIdx);
+      } else if (filter.startsWith('verse-')) {
+        const [lo, hi] = filter.slice(6).split('-').map(Number);
+        results = results.filter(n => n.verse >= lo && n.verse <= hi);
+      } else if (filter.startsWith('num-')) {
+        const [lo, hi] = filter.slice(4).split('-').map(Number);
+        results = results.filter(n => n.number >= lo && n.number <= hi);
       }
     }
 
@@ -567,8 +513,7 @@
 
     const verse = verseMap.get(name.verse);
     const verseSanskrit = verse ? verse.devanagari : '';
-    const syl = DATA.syllables[name.syllable];
-    const kuta = DATA.kutas[name.kuta];
+    const sectionLabel = ['First Section', 'Second Section', 'Third Section'][name.kuta] || '';
     const existingNote = getNote(name.number);
     const hasNote = existingNote.length > 0;
 
@@ -584,8 +529,8 @@
       </div>
       <div class="name-details">
         <div class="name-detail-row">
-          <div class="name-detail-label">Syllable</div>
-          <div class="name-detail-value">${escHtml(syl.iast)} (${syl.devanagari}) - ${escHtml(kuta.name)}</div>
+          <div class="name-detail-label">Section</div>
+          <div class="name-detail-value">${escHtml(sectionLabel)}</div>
         </div>
         <div class="name-detail-row">
           <div class="name-detail-label">Verse Context</div>
@@ -835,12 +780,12 @@
       pool = DATA.names.filter(n => !isLearned(n.number));
     } else if (scope === 'all') {
       pool = [...DATA.names];
-    } else if (scope.startsWith('syl-')) {
-      const sylIdx = parseInt(scope.slice(4), 10);
-      pool = DATA.names.filter(n => n.syllable === sylIdx);
     } else if (scope.startsWith('kuta-')) {
       const kutaIdx = parseInt(scope.slice(5), 10);
       pool = DATA.names.filter(n => n.kuta === kutaIdx);
+    } else if (scope.startsWith('verse-')) {
+      const [lo, hi] = scope.slice(6).split('-').map(Number);
+      pool = DATA.names.filter(n => n.verse >= lo && n.verse <= hi);
     }
 
     const srsData = loadSRS();

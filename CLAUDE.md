@@ -1,7 +1,7 @@
 # Sri Lalita Trishati - Project Context
 
 ## What this is
-Interactive website for learning Sri Lalita Trishati - 300 sacred names of Lalita Tripurasundari, structured upon the 15-syllabled Pañcadaśākṣarī mantra (3 kūṭas × 15 syllables × 20 names = 300).
+Interactive website for studying Sri Lalita Trishati - 300 sacred names of Lalita Tripurasundari from the Brahmāṇḍa Purāṇa.
 
 - Live at https://lalita-trishati.vercel.app
 - Repo: https://github.com/TheHardikDewra/lalita-trishati
@@ -15,25 +15,35 @@ Interactive website for learning Sri Lalita Trishati - 300 sacred names of Lalit
 - Source of truth for IAST: derived from ITRANS via the converter in build_data.py
 - NEVER fabricate Sanskrit text, transliterations, or meanings
 
-## Structure of the Trishati
-The 300 names are organized into 15 syllables of the Pañcadaśākṣarī mantra. Each syllable generates 20 names. The syllables are grouped into 3 kūṭas:
+## CRITICAL: Do not display the Pañcadaśākṣarī mantra
+The Goddess in the Pūrvapīṭhikā of this very stotra commands:
 
-- **Vāgbhava Kūṭa** (5 syllables: Ka, E, Ī, La, Hrīṃ) - names 1-100
-- **Kāmarāja Kūṭa** (6 syllables: Ha, Sa, Ka, Ha, La, Hrīṃ) - names 101-200
-- **Śakti Kūṭa** (4 syllables: Sa, Ka, La, Hrīṃ) - names 201-300
+> राज्यं देयं शिरो देयं न देया षोडशाक्षरी
 
-The first name of each syllable group is a marker: "Kakāra-rūpā", "Ekāra-rūpā", "Īkāra-rūpā", "Lakāra-rūpā", "Hrīṃkāra-rūpā", "Hakāra-rūpā", "Sakāra-rūpā", "Kakārārthā", "Hakārārthā", "Lakārākhyā", "Hrīṃkāriṇī", "Sakārākhyā", "Kakāriṇī", "Lakāriṇī", "Hrīṃkāra-mūrti".
+The 15-syllable seed mantra of Devī upon which this stotra is structured **must not be displayed openly** on the site. This is a hard rule, not a stylistic preference.
+
+This means:
+- NEVER show the explicit mantra sequence (the 15-letter string in any script)
+- NEVER label sections by their syllable letters in user-facing UI
+- NEVER use the bīja "Hrīṃ" as a primary visual element (icon, headers, etc.)
+- The icon uses ॐ (Om), not any Trishati-specific bīja
+- Internal data structure has `kuta` and `syllable` fields for ordering, but they are NOT exposed visually except via:
+  - "First Section / Second Section / Third Section" labels (3 sections of 100 names each)
+  - "Verse N" / "Verses N-M" range labels
+  - The verse text itself (which is the public stotra and DOES contain syllable-prefixed names like "Kakāra-rūpā", but never the mantra as an ordered sequence)
+
+The mantra is to be received from a living Guru by initiation (dīkṣā). This site presents only the public namāvalī and stotra.
 
 ## Data Pipeline
 - Source data: sanskritdocuments.org (Devanagari + ITRANS) + kadambakusumam.blogspot.com (English meanings)
 - All sources are downloaded as raw HTML/text files in `~/lalita-trishati-research/`
 - Build script: `build_data.py` reads sources, converts ITRANS to IAST, derives nominative forms from dative, maps names to verses, and writes `data.js`
-- Verse-name mapping uses syllable anchors (each syllable has exactly 20 names; we find the verse where each syllable starts)
+- Verse-name mapping uses syllable anchors internally for accuracy (each grouping has exactly 20 names)
 - Each name is stored with both nominative (stotra form) and dative (namāvalī form) for both Devanagari and IAST
 
 ## Known Data Caveats
 - The source text from sanskritdocuments.org has one minor typo at name 149 ("कलानाथमुखी"): the namaḥ is misspelled as "नाम्ः". The build script normalizes this.
-- Verse-to-name mapping is exact at the syllable level (20 names per syllable, always) but verse-level distribution within a syllable group is approximate due to sandhi. Most verses have 4-6 names; a few outliers (V12, V53) have more or fewer due to sandhi merging tokens.
+- Verse-to-name mapping is exact at the section level (100 names per section, always) but verse-level distribution within a section has minor variance due to sandhi merging adjacent name tokens. Most verses have 4-6 names; a few outliers may have more or fewer.
 
 ## Design Rules
 - NO gradients. NO glowy effects. Solid flat colors only
@@ -41,17 +51,16 @@ The first name of each syllable group is a marker: "Kakāra-rūpā", "Ekāra-rū
 - Fonts: Haffer (local) > Geist > Inter for body; Tiro Devanagari Sanskrit for Sanskrit
 - Dark theme default with warm gold accent (#c9a84c) - same as sister Sahasranama project
 - Light / Dark / System theme modes
-- Card designs: same conventions as Sahasranama project (tag/label strip for name cards, kūṭa-prefixed left bar for syllable cards)
 
 ## File Structure
-- `index.html` - Main page, SPA with hash routing (#home, #syllables, #names, #verses, #practice, #chant)
-- `style.css` - All styles. Inherits Sahasranama base + Trishati-specific additions at the bottom (kūṭa cards, syllable grid, panchadashi-card)
+- `index.html` - Main page, SPA with hash routing (#home, #verses, #names, #practice, #chant)
+- `style.css` - All styles. Inherits Sahasranama base + Trishati-specific additions at the bottom
 - `app.js` - Application logic (IIFE wrapped). State management, routing, all view renderers
 - `data.js` - Generated data file (DO NOT edit manually - regenerate via build_data.py)
 - `build_data.py` - Data merge script
 - `manifest.json` - PWA manifest
 - `sw.js` - Service worker for offline support
-- `icon.svg` - Hrīṃ bījā in gold, dark background
+- `icon.svg` - Om symbol (ॐ) in gold, dark background
 
 ## Storage Keys (localStorage)
 - `lt_learned` - Set of learned name numbers (JSON array)
@@ -63,7 +72,7 @@ The first name of each syllable group is a marker: "Kakāra-rūpā", "Ekāra-rū
 - `lt_chant_settings` - Speed, auto-advance, show translit/meaning
 - `lt_theme` - system/light/dark
 
-All keys are namespaced with `lt_` prefix to avoid collision with the sister Sahasranama site (`lsn_` prefix) if both are visited from the same browser.
+All keys are namespaced with `lt_` prefix to avoid collision with the sister Sahasranama site.
 
 ## Sister Projects
 - /Users/hardikdewra/lalita-sahasranama/ (live at https://lalita-sahasranama.vercel.app)
@@ -77,3 +86,4 @@ This project follows the same architecture and design language as those two.
 - localStorage for all user data
 - No server needed - fully static, works offline via service worker
 - Hosted on Vercel as a static site
+- Primary navigation is verse-by-verse (1-59), NOT syllable-based

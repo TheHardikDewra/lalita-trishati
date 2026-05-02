@@ -1,40 +1,45 @@
 # Sri Lalita Trishati
 
-Interactive guide to the 300 sacred names of Lalita Tripurasundari, structured upon the fifteen-syllabled Pañcadaśākṣarī mantra.
+Interactive verse-by-verse guide to the 300 sacred names of Lalita Tripurasundari.
 
 **Live site**: [lalita-trishati.vercel.app](https://lalita-trishati.vercel.app)
 
 ## What this is
 
-The Lalita Trishati is a hymn from the Brahmāṇḍa Purāṇa, narrated by Lord Hayagrīva to the sage Agastya at the express command of the Divine Mother. While the better-known Lalita Sahasranama lists a thousand names of the Goddess, the Trishati lists three hundred - structured directly upon Her fifteen-syllabled Pañcadaśākṣarī mantra. Each of the fifteen syllables generates twenty names. In the Sri Vidya tradition, the Sahasranama is described as the fragrance of the flower; the Trishati is the flower itself.
+The Lalita Trishati is a hymn from the Brahmāṇḍa Purāṇa, narrated by Lord Hayagrīva to the sage Agastya at the express command of the Divine Mother. It contains 300 names of the Goddess, arranged in 59 verses across three sections. While the better-known Lalita Sahasranāma lists a thousand names, the Trishati is described as more secret, more compact - the Goddess's own wealth. In the Sri Vidya tradition, the Sahasranāma is the fragrance of the flower; the Trishati is the flower itself.
 
 This site is an open-source devotional offering. It exists for any seeker who wants to study, chant, or contemplate the 300 names with full Sanskrit text, transliteration, and meaning - on any device, online or offline.
 
 ## What's inside
 
 - **All 300 names** with Devanagari (Sanskrit), IAST transliteration, English transliteration, and English meaning
-- **15 syllables / 3 kūṭas** as the primary navigation, mirroring the structure of the Pañcadaśākṣarī mantra
 - **59 verses** of the main stotra body, navigable verse-by-verse with synchronised name listings
 - **Dhyāna verse** (meditation invocation) with translation
 - **Phala śruti** (the fruits of recitation) as taught by Hayagrīva to Agastya
 - **Namāvalī form** of every name (the "Oṁ X namaḥ" form for individual recitation)
 
+## A note on what this site does NOT include
+
+The Pañcadaśākṣarī mantra of Devī - the 15-syllable seed-mantra upon which the Trishati is structured - is **deliberately not displayed** anywhere on this site. The Goddess herself, in the Pūrvapīṭhikā of this very text, declares:
+
+> राज्यं देयं शिरो देयं न देया षोडशाक्षरी
+> *"Kingdom may be given, the head may be given, but the sixteen-syllabled mantra shall never be given (publicly)."*
+
+In keeping with that command, the mantra is to be received from a living Guru by formal initiation (dīkṣā), not picked up from a website. This site presents only the **public namāvalī and stotra** as preserved in the Brahmāṇḍa Purāṇa.
+
 ## Features
 
 ### Home
-Welcome dashboard with stats, daily Name of the Day, the three-kūṭa overview, sadhana tracker, dhyāna verse, phala śruti, and links to popular chanting audio.
-
-### Syllables
-The heart of the site. Three kūṭas (Vāgbhava, Kāmarāja, Śakti) with all 15 syllables of the Pañcadaśākṣarī mantra laid out as cards. Each syllable card shows the Devanagari, IAST, the range of names it generates, a brief meaning, and your learned-progress for that syllable.
-
-### Names
-Browse all 300 names with search, filter by syllable or kūṭa, and learned/unlearned filtering. Click any name to expand and see: detailed meaning, syllable context, verse it belongs to, the namāvalī "Oṁ X namaḥ" form, and space for personal notes.
+Welcome dashboard with stats, daily Name of the Day, sadhana tracker, dhyāna verse, phala śruti, and links to popular chanting audio.
 
 ### Verses
 Navigate verse-by-verse through all 59 ślokas of the main stotra. Each verse shows the Devanagari text with individual name breakdowns. Mark entire verses as learned. Progress bar tracks completion.
 
+### Names
+Browse all 300 names with search, filter by section / verse range / name range, and learned/unlearned filtering. Click any name to expand and see: detailed meaning, verse it belongs to, the namāvalī "Oṁ X namaḥ" form, and space for personal notes.
+
 ### Practice
-Flashcard mode with spaced repetition (SM-2 algorithm). Two directions: Sanskrit-to-Meaning and Meaning-to-Sanskrit. Scope by kūṭa, by syllable, by all/unlearned/due. Keyboard shortcuts: Space to flip, G for "got it", R for "review again".
+Flashcard mode with spaced repetition (SM-2 algorithm). Two directions: Sanskrit-to-Meaning and Meaning-to-Sanskrit. Scope by section, by verse range, or all/unlearned/due. Keyboard shortcuts: Space to flip, G for "got it", R for "review again".
 
 ### Chant
 Full-screen teleprompter mode for daily recitation. Large Devanagari text, auto-advance with configurable speed, fullscreen API, keyboard navigation (arrows, space, F), optional transliteration and meanings overlay. Remembers your position between sessions.
@@ -77,20 +82,11 @@ python3 -m http.server 9000
 
 ## Regenerating data
 
-The data file is generated from authoritative sources. To regenerate:
-
 ```bash
-# Source files live in ~/lalita-trishati-research/
 python3 build_data.py
 ```
 
-The script reads:
-- `trishati_full.txt` (Devanagari stotra from sanskritdocuments.org)
-- `trishati_namavali.txt` (Devanagari namāvalī)
-- `trishati.itx` and `trishati_namavali.itx` (ITRANS source)
-- `kadamba_english.txt` (English transliteration and meanings)
-
-…and writes `data.js` with all 300 names organised by syllable and kūṭa.
+The script reads source files from `~/lalita-trishati-research/` (Devanagari from sanskritdocuments.org, English meanings from kadamba blog) and writes `data.js` with all 300 names organised by verse.
 
 ## Sister projects
 

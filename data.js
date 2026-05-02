@@ -4219,7 +4219,7 @@ const TRISHATI_DATA = {
       "meaning": "Light - the first syllable of the Pañcadaśī mantra",
       "nameStart": 1,
       "nameEnd": 20,
-      "kutaName": "Vāgbhava Kūṭa"
+      "kutaName": "First Section"
     },
     {
       "index": 1,
@@ -4229,7 +4229,7 @@ const TRISHATI_DATA = {
       "meaning": "Absolute Truth (Brahman) - the second syllable",
       "nameStart": 21,
       "nameEnd": 40,
-      "kutaName": "Vāgbhava Kūṭa"
+      "kutaName": "First Section"
     },
     {
       "index": 2,
@@ -4239,7 +4239,7 @@ const TRISHATI_DATA = {
       "meaning": "Śakti, the moving force - the third syllable",
       "nameStart": 41,
       "nameEnd": 60,
-      "kutaName": "Vāgbhava Kūṭa"
+      "kutaName": "First Section"
     },
     {
       "index": 3,
@@ -4249,7 +4249,7 @@ const TRISHATI_DATA = {
       "meaning": "The wave that initiates wisdom - the fourth syllable",
       "nameStart": 61,
       "nameEnd": 80,
-      "kutaName": "Vāgbhava Kūṭa"
+      "kutaName": "First Section"
     },
     {
       "index": 4,
@@ -4259,7 +4259,7 @@ const TRISHATI_DATA = {
       "meaning": "The bījā of Devī - seal of the Vāgbhava Kūṭa",
       "nameStart": 81,
       "nameEnd": 100,
-      "kutaName": "Vāgbhava Kūṭa"
+      "kutaName": "First Section"
     },
     {
       "index": 5,
@@ -4269,7 +4269,7 @@ const TRISHATI_DATA = {
       "meaning": "Valour that destroys enemies - the sixth syllable",
       "nameStart": 101,
       "nameEnd": 120,
-      "kutaName": "Kāmarāja Kūṭa"
+      "kutaName": "Second Section"
     },
     {
       "index": 6,
@@ -4279,7 +4279,7 @@ const TRISHATI_DATA = {
       "meaning": "Material wealth and pleasures - the seventh syllable",
       "nameStart": 121,
       "nameEnd": 140,
-      "kutaName": "Kāmarāja Kūṭa"
+      "kutaName": "Second Section"
     },
     {
       "index": 7,
@@ -4289,7 +4289,7 @@ const TRISHATI_DATA = {
       "meaning": "Light, returning - the eighth syllable",
       "nameStart": 141,
       "nameEnd": 160,
-      "kutaName": "Kāmarāja Kūṭa"
+      "kutaName": "Second Section"
     },
     {
       "index": 8,
@@ -4299,7 +4299,7 @@ const TRISHATI_DATA = {
       "meaning": "Wealth and valour - the ninth syllable",
       "nameStart": 161,
       "nameEnd": 180,
-      "kutaName": "Kāmarāja Kūṭa"
+      "kutaName": "Second Section"
     },
     {
       "index": 9,
@@ -4309,7 +4309,7 @@ const TRISHATI_DATA = {
       "meaning": "Wisdom-wave, returning - the tenth syllable",
       "nameStart": 181,
       "nameEnd": 200,
-      "kutaName": "Kāmarāja Kūṭa"
+      "kutaName": "Second Section"
     },
     {
       "index": 10,
@@ -4319,7 +4319,7 @@ const TRISHATI_DATA = {
       "meaning": "The bījā of Devī - seal of the Kāmarāja Kūṭa",
       "nameStart": 201,
       "nameEnd": 220,
-      "kutaName": "Kāmarāja Kūṭa"
+      "kutaName": "Second Section"
     },
     {
       "index": 11,
@@ -4329,7 +4329,7 @@ const TRISHATI_DATA = {
       "meaning": "Wealth, returning - the twelfth syllable",
       "nameStart": 221,
       "nameEnd": 240,
-      "kutaName": "Śakti Kūṭa"
+      "kutaName": "Third Section"
     },
     {
       "index": 12,
@@ -4339,7 +4339,7 @@ const TRISHATI_DATA = {
       "meaning": "Light, third turn - the thirteenth syllable",
       "nameStart": 241,
       "nameEnd": 260,
-      "kutaName": "Śakti Kūṭa"
+      "kutaName": "Third Section"
     },
     {
       "index": 13,
@@ -4349,7 +4349,7 @@ const TRISHATI_DATA = {
       "meaning": "Wisdom-wave, third turn - the fourteenth syllable",
       "nameStart": 261,
       "nameEnd": 280,
-      "kutaName": "Śakti Kūṭa"
+      "kutaName": "Third Section"
     },
     {
       "index": 14,
@@ -4359,14 +4359,13 @@ const TRISHATI_DATA = {
       "meaning": "The final bījā - seal of the Śakti Kūṭa",
       "nameStart": 281,
       "nameEnd": 300,
-      "kutaName": "Śakti Kūṭa"
+      "kutaName": "Third Section"
     }
   ],
   "kutas": [
     {
       "index": 0,
-      "name": "Vāgbhava Kūṭa",
-      "devanagari": "वाग्भव कूट",
+      "name": "First Section",
       "syllables": [
         0,
         1,
@@ -4374,12 +4373,11 @@ const TRISHATI_DATA = {
         3,
         4
       ],
-      "description": "The seed of speech and wisdom. Five syllables (Ka E Ī La Hrīṃ) presiding over the head and the realm of Vāk (sacred speech). Names 1-100 worship Devī as the source of all knowledge."
+      "description": "Names 1-100 worship Devī as the source of all knowledge and sacred speech."
     },
     {
       "index": 1,
-      "name": "Kāmarāja Kūṭa",
-      "devanagari": "कामराज कूट",
+      "name": "Second Section",
       "syllables": [
         5,
         6,
@@ -4388,19 +4386,18 @@ const TRISHATI_DATA = {
         9,
         10
       ],
-      "description": "The seed of love and creative will. Six syllables (Ha Sa Ka Ha La Hrīṃ) presiding over the heart. Names 101-200 worship Devī as the empress of all desire and the consort of Kāmeśvara."
+      "description": "Names 101-200 worship Devī as the empress of all desire and the consort of Kāmeśvara."
     },
     {
       "index": 2,
-      "name": "Śakti Kūṭa",
-      "devanagari": "शक्ति कूट",
+      "name": "Third Section",
       "syllables": [
         11,
         12,
         13,
         14
       ],
-      "description": "The seed of pure power. Four syllables (Sa Ka La Hrīṃ) presiding over the mūlādhāra. Names 201-300 worship Devī as the supreme Śakti who pervades and dissolves all."
+      "description": "Names 201-300 worship Devī as the supreme Śakti who pervades and dissolves all."
     }
   ],
   "verses": [
@@ -5499,10 +5496,5 @@ const TRISHATI_DATA = {
     "iast": "atimadhura-cāpahastām aparimitāmoda-bāṇa-saubhāgyām | aruṇām atiśayakaruṇām abhinava-kulasundarīṃ vande ||",
     "english": "I bow to Her who holds the supremely sweet sugarcane bow and arrows of boundless joy and prosperity, who is crimson-hued, who is mercy beyond all measure, the ever-fresh empress of beauty."
   },
-  "panchapuja": "लं पृथिव्यात्मिकायै श्रीललिताम्बिकायै गन्धं समर्पयामि ।\nहं आकाशात्मिकायै श्रीललिताम्बिकायै पुष्पैः पूजयामि ।\nयं वाय्वात्मिकायै श्रीललिताम्बिकायै धूपमाघ्रापयामि ।\nरं वह्यात्मिकायै श्रीललिताम्बिकायै दीपं दर्शयामि ।\nवं अमृतात्मिकायै श्रीललिताम्बिकायै अमृतं महानैवेद्यं निवेदयामि ।\nसं सर्वात्मिकायै श्रीललिताम्बिकायै सर्वोपचारपूजां समर्पयामि ॥",
-  "panchadashi": {
-    "devanagari": "क ए ई ल ह्रीं | ह स क ह ल ह्रीं | स क ल ह्रीं",
-    "iast": "ka e ī la hrīṃ | ha sa ka ha la hrīṃ | sa ka la hrīṃ",
-    "description": "The fifteen-syllabled mantra of Devī, structured in three kūṭas. Each syllable generates twenty names of the Lalitā Triśatī."
-  }
+  "panchapuja": "लं पृथिव्यात्मिकायै श्रीललिताम्बिकायै गन्धं समर्पयामि ।\nहं आकाशात्मिकायै श्रीललिताम्बिकायै पुष्पैः पूजयामि ।\nयं वाय्वात्मिकायै श्रीललिताम्बिकायै धूपमाघ्रापयामि ।\nरं वह्यात्मिकायै श्रीललिताम्बिकायै दीपं दर्शयामि ।\nवं अमृतात्मिकायै श्रीललिताम्बिकायै अमृतं महानैवेद्यं निवेदयामि ।\nसं सर्वात्मिकायै श्रीललिताम्बिकायै सर्वोपचारपूजां समर्पयामि ॥"
 };

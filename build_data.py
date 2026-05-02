@@ -155,20 +155,17 @@ SYLLABLES = [
 
 KUTAS = [
     {"index": 0,
-     "name": "Vāgbhava Kūṭa",
-     "devanagari": "वाग्भव कूट",
+     "name": "First Section",
      "syllables": [0, 1, 2, 3, 4],
-     "description": "The seed of speech and wisdom. Five syllables (Ka E Ī La Hrīṃ) presiding over the head and the realm of Vāk (sacred speech). Names 1-100 worship Devī as the source of all knowledge."},
+     "description": "Names 1-100 worship Devī as the source of all knowledge and sacred speech."},
     {"index": 1,
-     "name": "Kāmarāja Kūṭa",
-     "devanagari": "कामराज कूट",
+     "name": "Second Section",
      "syllables": [5, 6, 7, 8, 9, 10],
-     "description": "The seed of love and creative will. Six syllables (Ha Sa Ka Ha La Hrīṃ) presiding over the heart. Names 101-200 worship Devī as the empress of all desire and the consort of Kāmeśvara."},
+     "description": "Names 101-200 worship Devī as the empress of all desire and the consort of Kāmeśvara."},
     {"index": 2,
-     "name": "Śakti Kūṭa",
-     "devanagari": "शक्ति कूट",
+     "name": "Third Section",
      "syllables": [11, 12, 13, 14],
-     "description": "The seed of pure power. Four syllables (Sa Ka La Hrīṃ) presiding over the mūlādhāra. Names 201-300 worship Devī as the supreme Śakti who pervades and dissolves all."},
+     "description": "Names 201-300 worship Devī as the supreme Śakti who pervades and dissolves all."},
 ]
 
 # Each syllable holds 20 names. Map name number → syllable index.
@@ -690,11 +687,6 @@ def main():
             "english": "I bow to Her who holds the supremely sweet sugarcane bow and arrows of boundless joy and prosperity, who is crimson-hued, who is mercy beyond all measure, the ever-fresh empress of beauty.",
         },
         "panchapuja": panchapuja,
-        "panchadashi": {
-            "devanagari": "क ए ई ल ह्रीं | ह स क ह ल ह्रीं | स क ल ह्रीं",
-            "iast": "ka e ī la hrīṃ | ha sa ka ha la hrīṃ | sa ka la hrīṃ",
-            "description": "The fifteen-syllabled mantra of Devī, structured in three kūṭas. Each syllable generates twenty names of the Lalitā Triśatī.",
-        },
     }
 
     # Write data.js

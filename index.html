@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive guide to Sri Lalita Trishati - 300 sacred names of the Divine Mother, structured upon the Pañcadaśākṣarī mantra">
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta property="og:title" content="Sri Lalita Trishati">
+  <meta property="og:description" content="300 sacred names of Lalita Tripurasundari, structured upon the 15-syllabled Pañcadaśākṣarī mantra. Sanskrit, IAST, meanings, audio, sadhana tracker.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lalita-trishati.vercel.app/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sri Lalita Trishati">
+  <meta name="twitter:description" content="300 sacred names of the Divine Mother, structured on the Pañcadaśākṣarī mantra.">
+  <title>Sri Lalita Trishati Stotra</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-title">
+      <h1 class="title-sanskrit">श्रीललितात्रिशतीस्तोत्रम्</h1>
+      <p class="title-english">Sri Lalita Trishati Stotra</p>
+      <div class="header-controls">
+        <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">System</button>
+        <div class="font-controls" id="font-controls"></div>
+      </div>
+    </div>
+    <nav class="nav-tabs" role="tablist">
+      <a href="#home" class="nav-tab active" role="tab" data-view="home">Home</a>
+      <a href="#syllables" class="nav-tab" role="tab" data-view="syllables">Syllables</a>
+      <a href="#names" class="nav-tab" role="tab" data-view="names">Names</a>
+      <a href="#verses" class="nav-tab" role="tab" data-view="verses">Verses</a>
+      <a href="#practice" class="nav-tab" role="tab" data-view="practice">Practice</a>
+      <a href="#chant" class="nav-tab" role="tab" data-view="chant">Chant</a>
+    </nav>
+  </header>
+
+  <main id="app">
+    <!-- Home View -->
+    <section id="view-home" class="view">
+      <div class="welcome-section">
+        <p class="welcome-text">The Lalita Trishati is a sacred hymn from the Brahmāṇḍa Purāṇa, revealed by Lord Hayagrīva to the sage Agastya at the express command of the Divine Mother herself. It contains 300 names of Lalitā Tripurasundarī, structured directly upon Her fifteen-syllabled Pañcadaśākṣarī mantra - twenty names blossoming from each of the fifteen syllables. While the Lalitā Sahasranāma is described as the fragrance of the flower, the Trishati is the flower itself - more secret, more compact, the Goddess's own wealth.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="stat-names">300</span>
+          <span class="stat-label">Divine Names</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">15</span>
+          <span class="stat-label">Syllables</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Kūṭas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-learned">0</span>
+          <span class="stat-label">Names Learned</span>
+        </div>
+      </div>
+
+      <div class="panchadashi-section">
+        <h2 class="section-title">The Pañcadaśākṣarī Mantra</h2>
+        <div class="panchadashi-card">
+          <p class="panchadashi-intro">Each of the 15 syllables generates 20 names. The mantra is structured in three kūṭas (groupings):</p>
+          <div class="kuta-row">
+            <div class="kuta-mini">
+              <div class="kuta-mini-label">Vāgbhava</div>
+              <div class="kuta-mini-syllables">क ए ई ल ह्रीं</div>
+              <div class="kuta-mini-iast">ka e ī la hrīṃ</div>
+              <div class="kuta-mini-count">Names 1-100</div>
+            </div>
+            <div class="kuta-mini">
+              <div class="kuta-mini-label">Kāmarāja</div>
+              <div class="kuta-mini-syllables">ह स क ह ल ह्रीं</div>
+              <div class="kuta-mini-iast">ha sa ka ha la hrīṃ</div>
+              <div class="kuta-mini-count">Names 101-200</div>
+            </div>
+            <div class="kuta-mini">
+              <div class="kuta-mini-label">Śakti</div>
+              <div class="kuta-mini-syllables">स क ल ह्रीं</div>
+              <div class="kuta-mini-iast">sa ka la hrīṃ</div>
+              <div class="kuta-mini-count">Names 201-300</div>
+            </div>
+          </div>
+          <a href="#syllables" class="panchadashi-link">Explore all 15 syllables →</a>
+        </div>
+      </div>
+
+      <div class="sadhana-section">
+        <h2 class="section-title">Sadhana Tracker</h2>
+        <div class="sadhana-card">
+          <div class="sadhana-stats">
+            <div class="sadhana-stat">
+              <span class="sadhana-stat-number" id="sadhana-total">0</span>
+              <span class="sadhana-stat-label">Total Recitations</span>
+            </div>
+            <div class="sadhana-stat">
+              <span class="sadhana-stat-number" id="sadhana-streak">0</span>
+              <span class="sadhana-stat-label">Day Streak</span>
+            </div>
+            <div class="sadhana-stat">
+              <span class="sadhana-stat-number" id="sadhana-month">0</span>
+              <span class="sadhana-stat-label">This Month</span>
+            </div>
+          </div>
+          <div class="sadhana-actions">
+            <button class="sadhana-log-btn" id="sadhana-log">Log Recitation</button>
+            <div class="sadhana-last" id="sadhana-last"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notd-section">
+        <h2 class="section-title">Name of the Day</h2>
+        <div class="notd-card" id="name-of-day">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <div class="dhyana-section">
+        <button class="dhyana-toggle" id="dhyana-toggle" aria-expanded="false" aria-controls="dhyana-content">
+          <h2 class="section-title">Dhyāna Verse</h2>
+          <span class="toggle-icon" id="toggle-icon">+</span>
+        </button>
+        <div class="dhyana-content" id="dhyana-content" hidden>
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <div class="phala-shruti-section">
+        <button class="phala-shruti-toggle" id="phala-shruti-toggle" aria-expanded="false" aria-controls="phala-shruti-content">
+          <h2 class="section-title">Phala Śruti</h2>
+          <span class="toggle-icon" id="phala-shruti-toggle-icon">+</span>
+        </button>
+        <div class="phala-shruti-content" id="phala-shruti-content" hidden>
+          <div class="phala-shruti-verse">
+            <p>From the Uttarapīṭhikā, Hayagrīva's teaching to Agastya:</p>
+          </div>
+          <div class="phala-shruti-verse">
+            <div class="phala-shruti-deva">यः कीर्तयेत्सकृत्भक्त्या दिव्य-नामशत-त्रयम् ।<br>तस्य पुण्यमहं वक्ष्ये श‍ृणु त्वं कुम्भसम्भव ॥</div>
+            <div class="phala-shruti-translit">yaḥ kīrtayet sakṛt bhaktyā divya-nāma-śata-trayam | tasya puṇyam ahaṃ vakṣye śṛṇu tvaṃ kumbha-sambhava ||</div>
+            <div class="phala-shruti-meaning">"Whoever, with devotion, recites these three hundred divine names even once - hear, O pot-born sage, the merit they accrue."</div>
+          </div>
+          <div class="phala-shruti-verse">
+            <div class="phala-shruti-deva">रहस्यनाम-साहस्रपाठे यत्फलमीरितम् ।<br>तत्फलं कोटिगुणितमेक-नामजपाद्भवेत् ॥</div>
+            <div class="phala-shruti-translit">rahasya-nāma-sāhasra-pāṭhe yat phalam īritam | tat phalaṃ koṭi-guṇitam eka-nāma-japād bhavet ||</div>
+            <div class="phala-shruti-meaning">"The merit declared for reciting the secret thousand names is multiplied ten-million-fold by the recitation of even a single name from this Trishati."</div>
+          </div>
+          <div class="phala-shruti-verse">
+            <div class="phala-shruti-deva">आयुष्करं पुष्टिकरं पुत्रदं वश्यकारकम् ।<br>विद्याप्रदं कीर्तिकरं सुकवित्व-प्रदायकम् ॥<br>सर्वसम्पत्प्रदं सर्वभोगदं सर्वसौख्यदम् ।<br>सर्वाभीष्टप्रदं चैव देव्या नामशतत्रयम् ॥</div>
+            <div class="phala-shruti-meaning">"It bestows long life, vigour, children, mastery; it grants knowledge, fame, and poetic genius; it confers all wealth, all enjoyments, all happiness, and the fulfilment of every desire - this triple-hundred of names of the Goddess."</div>
+          </div>
+          <div class="phala-shruti-verse colophon">
+            <div class="phala-shruti-deva">॥ इति श्रीब्रह्माण्डपुराणे उत्तरखण्डे श्रीहयग्रीवागस्त्य-संवादे श्रीललितात्रिशती-स्तोत्रकथनं सम्पूर्णम् ॥</div>
+            <div class="phala-shruti-meaning">Thus ends the narration of the Sri Lalita Trishati Stotra, from the dialogue between Sri Hayagriva and Agastya, in the Uttarakhanda of the Brahmanda Purana.</div>
+          </div>
+          <div class="phala-shruti-note">
+            <p>Tradition holds that recitation on Fridays renders the veil between devotee and Devī almost transparent. The text is described as <em>sarva-pūrti-karī</em> (the fulfiller of all completeness) and <em>rahasyāti-rahasya</em> (secret beyond all secrets). Chanted with sincerity, it bridges <em>bhoga</em> (worldly fulfilment) and <em>mokṣa</em> (liberation).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-section">
+        <h2 class="section-title">Chanting Audio</h2>
+        <div class="audio-links">
+          <a href="https://www.youtube.com/watch?v=QauEIfrK690" target="_blank" rel="noopener" class="audio-link">
+            <span class="audio-title">Sri Lalita Trishati Stotram - Bombay Sisters</span>
+            <span class="audio-artist">Most-loved traditional rendition</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=nS1thFBAgck" target="_blank" rel="noopener" class="audio-link">
+            <span class="audio-title">Lalitha Trishati for Chanting</span>
+            <span class="audio-artist">Slow-paced, follow-along version</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <a href="#syllables" class="action-btn">Explore Syllables</a>
+        <a href="#names" class="action-btn">Browse All Names</a>
+        <a href="#practice" class="action-btn">Start Practice</a>
+        <a href="#chant" class="action-btn">Chant Mode</a>
+      </div>
+    </section>
+
+    <!-- Syllables View -->
+    <section id="view-syllables" class="view" hidden>
+      <div class="syllables-intro">
+        <p>The Pañcadaśākṣarī mantra of Devī is built from fifteen sacred syllables, divided into three kūṭas. Each syllable generates twenty names of the Trishati. Click any syllable to study its names.</p>
+      </div>
+      <div id="kutas-list">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- Names View -->
+    <section id="view-names" class="view" hidden>
+      <div class="names-controls">
+        <div class="search-bar">
+          <input type="text" id="names-search" placeholder="Search by name, meaning, or number..." autocomplete="off" spellcheck="false">
+        </div>
+        <div class="filter-row">
+          <select id="range-filter" aria-label="Filter by syllable">
+            <option value="all">All Names</option>
+            <optgroup label="Vāgbhava Kūṭa">
+              <option value="syl-0">Ka (1-20)</option>
+              <option value="syl-1">E (21-40)</option>
+              <option value="syl-2">Ī (41-60)</option>
+              <option value="syl-3">La (61-80)</option>
+              <option value="syl-4">Hrīṃ (81-100)</option>
+            </optgroup>
+            <optgroup label="Kāmarāja Kūṭa">
+              <option value="syl-5">Ha (101-120)</option>
+              <option value="syl-6">Sa (121-140)</option>
+              <option value="syl-7">Ka (141-160)</option>
+              <option value="syl-8">Ha (161-180)</option>
+              <option value="syl-9">La (181-200)</option>
+              <option value="syl-10">Hrīṃ (201-220)</option>
+            </optgroup>
+            <optgroup label="Śakti Kūṭa">
+              <option value="syl-11">Sa (221-240)</option>
+              <option value="syl-12">Ka (241-260)</option>
+              <option value="syl-13">La (261-280)</option>
+              <option value="syl-14">Hrīṃ (281-300)</option>
+            </optgroup>
+          </select>
+          <select id="status-filter" aria-label="Filter by status">
+            <option value="all">All</option>
+            <option value="learned">Learned</option>
+            <option value="unlearned">Not Learned</option>
+          </select>
+        </div>
+        <div class="names-counter" id="names-counter">300 names</div>
+      </div>
+      <div class="names-grid" id="names-grid">
+        <!-- Filled by JS -->
+      </div>
+      <div class="empty-state" id="names-empty" hidden>
+        <p>No names match your search.</p>
+      </div>
+    </section>
+
+    <!-- Verses View -->
+    <section id="view-verses" class="view" hidden>
+      <div class="verse-nav">
+        <button class="verse-nav-btn" id="verse-prev" aria-label="Previous verse">Prev</button>
+        <div class="verse-selector">
+          <label for="verse-jump">Verse</label>
+          <input type="number" id="verse-jump" min="1" max="59" value="1">
+          <span class="verse-total">of 59</span>
+        </div>
+        <button class="verse-nav-btn" id="verse-next" aria-label="Next verse">Next</button>
+      </div>
+      <div class="verse-progress-bar">
+        <div class="verse-progress-fill" id="verse-progress-fill"></div>
+      </div>
+      <div class="verse-progress-text" id="verse-progress-text">0 of 59 verses completed</div>
+      <div class="verse-display" id="verse-display">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- Practice View -->
+    <section id="view-practice" class="view" hidden>
+      <div class="practice-controls">
+        <div class="practice-mode">
+          <button class="mode-btn active" id="mode-s2m" data-mode="s2m">Sanskrit to Meaning</button>
+          <button class="mode-btn" id="mode-m2s" data-mode="m2s">Meaning to Sanskrit</button>
+        </div>
+        <div class="practice-scope">
+          <select id="practice-scope" aria-label="Practice scope">
+            <option value="all">All Names</option>
+            <option value="unlearned">Unlearned Only</option>
+            <option value="due">Due Today (SRS)</option>
+            <optgroup label="By Kūṭa">
+              <option value="kuta-0">Vāgbhava Kūṭa (1-100)</option>
+              <option value="kuta-1">Kāmarāja Kūṭa (101-200)</option>
+              <option value="kuta-2">Śakti Kūṭa (201-300)</option>
+            </optgroup>
+            <optgroup label="By Syllable">
+              <option value="syl-0">Ka (1-20)</option>
+              <option value="syl-1">E (21-40)</option>
+              <option value="syl-2">Ī (41-60)</option>
+              <option value="syl-3">La (61-80)</option>
+              <option value="syl-4">Hrīṃ (81-100)</option>
+              <option value="syl-5">Ha (101-120)</option>
+              <option value="syl-6">Sa (121-140)</option>
+              <option value="syl-7">Ka (141-160)</option>
+              <option value="syl-8">Ha (161-180)</option>
+              <option value="syl-9">La (181-200)</option>
+              <option value="syl-10">Hrīṃ (201-220)</option>
+              <option value="syl-11">Sa (221-240)</option>
+              <option value="syl-12">Ka (241-260)</option>
+              <option value="syl-13">La (261-280)</option>
+              <option value="syl-14">Hrīṃ (281-300)</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="practice-score" id="practice-score">
+        <span id="score-got">0</span> got it &middot; <span id="score-review">0</span> to review
+      </div>
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Click to flip card">
+          <div class="flashcard-front" id="flashcard-front">
+            <!-- Filled by JS -->
+          </div>
+          <div class="flashcard-back" id="flashcard-back">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+      <p class="flip-hint" id="flip-hint">Click the card to reveal</p>
+      <div class="practice-actions" id="practice-actions" hidden>
+        <button class="practice-btn review-btn" id="btn-review">Review Again</button>
+        <button class="practice-btn got-btn" id="btn-got">Got It</button>
+      </div>
+      <div class="practice-empty" id="practice-empty" hidden>
+        <p>No names available for this selection. Try a different scope.</p>
+      </div>
+    </section>
+
+    <!-- Chant View -->
+    <section id="view-chant" class="view" hidden>
+      <div class="chant-controls">
+        <button class="chant-btn" id="chant-fullscreen">Full Screen</button>
+        <div class="chant-verse-info" id="chant-verse-info">Verse 1 of 59</div>
+        <button class="chant-btn" id="chant-settings-toggle">Settings</button>
+      </div>
+      <div class="chant-settings" id="chant-settings" hidden>
+        <label>Start from verse: <input type="number" id="chant-start" min="1" max="59" value="1"></label>
+        <label>Auto-advance: <input type="checkbox" id="chant-auto"> <span id="chant-auto-label">Off</span></label>
+        <label>Speed: <input type="range" id="chant-speed" min="3" max="15" value="8"> <span id="chant-speed-label">8s</span></label>
+        <label>Show transliteration: <input type="checkbox" id="chant-show-translit" checked></label>
+        <label>Show meanings: <input type="checkbox" id="chant-show-meaning"></label>
+      </div>
+      <div class="chant-stage" id="chant-stage">
+        <div class="chant-verse-number" id="chant-verse-num"></div>
+        <div class="chant-sanskrit" id="chant-sanskrit"></div>
+        <div class="chant-transliteration" id="chant-translit"></div>
+        <div class="chant-meanings" id="chant-meanings"></div>
+      </div>
+      <div class="chant-nav">
+        <button class="chant-nav-btn" id="chant-prev">Prev</button>
+        <div class="chant-progress-dots" id="chant-dots"></div>
+        <button class="chant-nav-btn" id="chant-next">Next</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-dedication">A devotional offering to Maa Lalita Tripurasundari - Om Aim Hrim Shrim</p>
+    <p class="footer-source">Sanskrit text: <a href="https://sanskritdocuments.org/doc_devii/trishati.html" target="_blank" rel="noopener">sanskritdocuments.org</a> · English meanings: <a href="http://kadambakusumam.blogspot.com/2010/09/sri-lalitaa-trisatee-stotram-famous.html" target="_blank" rel="noopener">Sri Ranganathan</a></p>
+    <div class="data-controls">
+      <button class="data-btn" id="export-data">Export Progress</button>
+      <label class="data-btn import-label">
+        Import Progress
+        <input type="file" id="import-data" accept=".json" hidden>
+      </label>
+    </div>
+    <p class="footer-repo"><a href="https://github.com/TheHardikDewra/lalita-trishati" target="_blank" rel="noopener">GitHub</a> · <a href="https://lalita-sahasranama.vercel.app" target="_blank" rel="noopener">Sister project: Lalita Sahasranama</a> · <a href="https://shri-rudram.vercel.app" target="_blank" rel="noopener">Shri Rudram</a></p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+  </script>
+</body>
+</html>

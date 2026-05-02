@@ -1,0 +1,21 @@
+{
+  "name": "Sri Lalita Trishati",
+  "short_name": "Trishati",
+  "description": "Interactive guide to the 300 sacred names of Lalita Tripurasundari, structured upon the Pañcadaśākṣarī mantra",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

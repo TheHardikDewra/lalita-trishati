@@ -1,10 +1,12 @@
-const CACHE_NAME = 'trishati-v1';
+const CACHE_NAME = 'trishati-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
   './data.js',
+  './firebase-config.js',
+  './sync.js',
   './manifest.json',
   './icon.svg'
 ];
@@ -28,6 +30,10 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Only handle same-origin GETs. Firebase auth/Firestore traffic and
+  // the gstatic SDK go straight to the network untouched.
+  if (event.request.method !== 'GET') return;
+  if (new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith(
     caches.match(event.request).then((cached) => cached || fetch(event.request))
   );

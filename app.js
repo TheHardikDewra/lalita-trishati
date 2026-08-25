@@ -369,7 +369,7 @@
     if (dhyanaContent.children.length === 0) {
       dhyanaContent.innerHTML = `
         <div class="dhyana-verse">
-          <div class="dhyana-deva">${DATA.dhyana.devanagari}</div>
+          <div class="dhyana-deva">${escHtml(dandaBreak(DATA.dhyana.devanagari))}</div>
           <div class="dhyana-translit">${escHtml(DATA.dhyana.iast)}</div>
           <div class="dhyana-meaning">${escHtml(DATA.dhyana.english)}</div>
         </div>
@@ -540,7 +540,7 @@
         <div class="name-detail-row">
           <div class="name-detail-label">Verse Context</div>
           <div class="name-detail-value">Verse ${name.verse}</div>
-          ${verseSanskrit ? `<div class="name-detail-value sanskrit-verse">${verseSanskrit}</div>` : ''}
+          ${verseSanskrit ? `<div class="name-detail-value sanskrit-verse">${escHtml(dandaBreak(verseSanskrit))}</div>` : ''}
         </div>
         <div class="name-mantra">${escHtml(name.namavaliIast)}</div>
         <div class="name-namavali-deva">${name.namavaliDevanagari}</div>
@@ -689,7 +689,7 @@
 
     let html = `
       <div class="verse-number-label">Verse ${num}</div>
-      <div class="verse-sanskrit-text">${verse ? verse.devanagari : ''}</div>
+      <div class="verse-sanskrit-text">${escHtml(dandaBreak(verse ? verse.devanagari : ''))}</div>
       <div class="verse-names-list">
     `;
 
@@ -1051,7 +1051,7 @@
 
     setTimeout(() => {
       document.getElementById('chant-verse-num').textContent = '॥ ' + toDevanagariNum(num) + ' ॥';
-      document.getElementById('chant-sanskrit').textContent = verse ? verse.devanagari : '';
+      document.getElementById('chant-sanskrit').textContent = dandaBreak(verse ? verse.devanagari : '');
 
       const translitEl = document.getElementById('chant-translit');
       if (STATE.chantShowTranslit && names.length > 0) {
@@ -1193,6 +1193,24 @@
   });
 
   // ---- Utility ----
+
+  /* ---- Verse + commentary formatting ---- */
+
+  // A shloka is written as two half-lines separated by a danda. The source
+  // keeps both on one line, so break after each danda that a new half-verse
+  // actually follows. The lookahead names what may start that next line -
+  // a Devanagari or Latin letter, or an opening bracket - which is what keeps
+  // the three things that trip this up intact: a verse number (॥२४॥) is not
+  // split at its digits, a run of dandas (।।) is not split down the middle,
+  // and a trailing danda before a closing bracket (इति ।) does not strand it
+  // on a line of its own. A danda that opens a line is left where it is.
+  function dandaBreak(text) {
+    if (text == null) return '';
+    return String(text).split('\n').map(function (line) {
+      return line.replace(/(\S[ \t]*[।॥]+)[ \t]*(?=[\u0900-\u0963\u0970-\u097FA-Za-z(\u201c\u2018"])/g, '$1\n');
+    }).join('\n').trim();
+  }
+
   function escHtml(str) {
     if (str == null) return '';
     const div = document.createElement('div');

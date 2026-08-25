@@ -2623,3 +2623,19 @@ body.auth-modal-open {
 .account-btn[hidden] {
   display: none;
 }
+
+
+/* ========================================
+   Verse line breaks
+
+   dandaBreak() gives each half-verse its own line; these keep those
+   newlines instead of collapsing them back into one running line.
+   ======================================== */
+
+.verse-sanskrit-text,
+.sanskrit-verse,
+.chant-sanskrit,
+.dhyana-deva,
+.phala-shruti-deva {
+  white-space: pre-line;
+}

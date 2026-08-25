@@ -1,4 +1,4 @@
-const CACHE_NAME = 'trishati-v4';
+const CACHE_NAME = 'trishati-v5';
 const CORE_ASSETS = [
   './',
   './index.html',

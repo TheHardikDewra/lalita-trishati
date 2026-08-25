@@ -1208,7 +1208,11 @@
     if (text == null) return '';
     return String(text).split('\n').map(function (line) {
       return line.replace(/(\S[ \t]*[।॥]+)[ \t]*(?=[\u0900-\u0963\u0970-\u097FA-Za-z(\u201c\u2018"])/g, '$1\n');
-    }).join('\n').trim();
+    }).join('\n')
+      // a few source strings carry a stray blank line, which this container
+      // would otherwise render as a gap in the middle of a verse
+      .replace(/\n[ \t]*\n+/g, '\n')
+      .trim();
   }
 
   function escHtml(str) {

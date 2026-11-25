@@ -111,46 +111,12 @@ def itrans_to_iast(s):
     return out
 
 
-# Panchadashi mantra structure
-# Vāgbhava Kūṭa (5 syllables): Ka E Ī La Hrīṃ
-# Kāmarāja Kūṭa (6 syllables): Ha Sa Ka Ha La Hrīṃ
-# Śakti Kūṭa (4 syllables): Sa Ka La Hrīṃ
+# The 300 names fall in 15 groups of 20, one group per syllable of the root
+# mantra, and the groups fall in three sections. Only each group's index and
+# section are kept here. The syllables themselves are received from the Guru at
+# initiation and are never written into this site's code or data (CLAUDE.md).
 SYLLABLES = [
-    # Vāgbhava Kūṭa (Speech / Wisdom)
-    {"index": 0,  "devanagari": "क",     "iast": "ka",   "kuta": 0,
-     "meaning": "Light - the first syllable of the Pañcadaśī mantra"},
-    {"index": 1,  "devanagari": "ए",     "iast": "e",    "kuta": 0,
-     "meaning": "Absolute Truth (Brahman) - the second syllable"},
-    {"index": 2,  "devanagari": "ई",     "iast": "ī",    "kuta": 0,
-     "meaning": "Śakti, the moving force - the third syllable"},
-    {"index": 3,  "devanagari": "ल",     "iast": "la",   "kuta": 0,
-     "meaning": "The wave that initiates wisdom - the fourth syllable"},
-    {"index": 4,  "devanagari": "ह्रीं",  "iast": "hrīṃ", "kuta": 0,
-     "meaning": "The bījā of Devī - seal of the Vāgbhava Kūṭa"},
-
-    # Kāmarāja Kūṭa (Desire / Love)
-    {"index": 5,  "devanagari": "ह",     "iast": "ha",   "kuta": 1,
-     "meaning": "Valour that destroys enemies - the sixth syllable"},
-    {"index": 6,  "devanagari": "स",     "iast": "sa",   "kuta": 1,
-     "meaning": "Material wealth and pleasures - the seventh syllable"},
-    {"index": 7,  "devanagari": "क",     "iast": "ka",   "kuta": 1,
-     "meaning": "Light, returning - the eighth syllable"},
-    {"index": 8,  "devanagari": "ह",     "iast": "ha",   "kuta": 1,
-     "meaning": "Wealth and valour - the ninth syllable"},
-    {"index": 9,  "devanagari": "ल",     "iast": "la",   "kuta": 1,
-     "meaning": "Wisdom-wave, returning - the tenth syllable"},
-    {"index": 10, "devanagari": "ह्रीं", "iast": "hrīṃ", "kuta": 1,
-     "meaning": "The bījā of Devī - seal of the Kāmarāja Kūṭa"},
-
-    # Śakti Kūṭa (Power)
-    {"index": 11, "devanagari": "स",     "iast": "sa",   "kuta": 2,
-     "meaning": "Wealth, returning - the twelfth syllable"},
-    {"index": 12, "devanagari": "क",     "iast": "ka",   "kuta": 2,
-     "meaning": "Light, third turn - the thirteenth syllable"},
-    {"index": 13, "devanagari": "ल",     "iast": "la",   "kuta": 2,
-     "meaning": "Wisdom-wave, third turn - the fourteenth syllable"},
-    {"index": 14, "devanagari": "ह्रीं", "iast": "hrīṃ", "kuta": 2,
-     "meaning": "The final bījā - seal of the Śakti Kūṭa"},
+    {"index": i, "kuta": 0 if i < 5 else (1 if i < 11 else 2)} for i in range(15)
 ]
 
 KUTAS = [
@@ -556,6 +522,20 @@ def build_verse_name_mapping(verses, name_devanagari_list):
     return name_to_verse
 
 
+# ---- 26 Nov 2026 audit fixes ----
+# Hardik's rule (CLAUDE.md): never show the mantra as an ordered sequence. Fifteen
+# English meanings ended by naming their letter's position in it; that clause goes.
+POSITION_CLAUSE = re.compile(r'\s*[-–]+\s*(?:-\s*)?(?:(?:this|it)\s+is\s+(?:also\s+)?)?the\s+\w+(?:\s+and\s+last)?'
+                             r'\s+letter\s+of\s+(?:the\s+)?pancha\s*da+s+a*k+s*hari\s+manth?ra', re.I)
+
+
+def apply_audit_fixes(names):
+    changed = [n["number"] for n in names if POSITION_CLAUSE.search(n["meaning"])]
+    assert changed == [1, 21, 41, 61, 81, 101, 121, 141, 161, 181, 201, 221, 241, 261, 281], changed
+    for n in names:
+        n["meaning"] = POSITION_CLAUSE.sub('', n["meaning"])
+
+
 def main():
     nam_dv = parse_namavali_devanagari(RESEARCH / 'trishati_namavali.txt')
     nam_itrans = parse_namavali_itrans(RESEARCH / 'trishati_namavali.itx')
@@ -654,6 +634,8 @@ def main():
             "namavaliDevanagari": dv_full,   # full "ॐ X नमः" line
             "namavaliIast": namavali_iast,   # full "oṁ x namaḥ" line
         })
+
+    apply_audit_fixes(names)
 
     # Build syllables list with name ranges
     syllables_out = []

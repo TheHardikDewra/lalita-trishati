@@ -58,6 +58,8 @@ def itrans_to_iast(s):
     # Handle longest matches first
     # Order: compound vowels/consonants > aspirated consonants > single chars
     rules = [
+        ('GY', 'jñ'),   # ज्ञ, as in sarvaGYA (122) and la.nghyetarAGYA (186)
+
         # Long vowels with marks
         ('R^i', 'ṛ'), ('R^I', 'ṝ'),
         ('L^i', 'ḷ'), ('L^I', 'ḹ'),
@@ -522,7 +524,24 @@ def build_verse_name_mapping(verses, name_devanagari_list):
     return name_to_verse
 
 
-# ---- 26 Nov 2026 audit fixes ----
+# ---- 26 Nov 2026 audit fixes. Every Devanagari form below is the stotra body's
+# own word (trishati_full.txt) with its sandhi undone and, as for the other 290
+# names, without the final visarga. ----
+NOMINATIVE_FIXES = {   # name: (Devanagari, IAST)        stotra body reads
+    74: ('लतातनु', 'latātanu'),                          # लतातनुः ॥ १५॥
+    139: ('सर्वमाता', 'sarvamātā'),                      # सर्वारुणा सर्वमाता
+    148: ('करभोरु', 'karabhoru'),                        # करभोरुः कलानाथमुखी
+    204: ('ह्रींशिखामणि', 'hrīṃśikhāmaṇi'),              # ह्रींशिखामणिः ॥ ३८॥
+    263: ('लब्धधी', 'labdhadhī'),                        # लब्धधीर्लब्धवाञ्छिता
+    281: ('ह्रींकारमूर्ति', 'hrīṃkāramūrti'),            # ह्रींकारमूर्तिर्ह्रींकार-सौधश‍ृङ्ग
+    285: ('ह्रींकारमणिदीपार्चि', 'hrīṃkāramaṇidīpārci'),  # ह्रींकार-मणिदीपार्चिर्ह्रींकार-तरुशारिका
+    287: ('ह्रींकारपेटकमणि', 'hrīṃkārapeṭakamaṇi'),      # ह्रींकार-पेटकमणिर्ह्रींकारदर्श
+    291: ('ह्रींकारशुक्तिका मुक्तामणि', 'hrīṃkāraśuktikā muktāmaṇi'),  # ह्रींकार-शुक्तिका-मुक्तामणिर्
+    294: ('ह्रींकारवेदोपनिषत्', 'hrīṃkāravedopaniṣat'),  # ह्रींकार-वेदोपनिषद् ह्रींकाराध्वर
+}
+# The namavali source reads ह्रींकरमणि for 285; the stotra body and all 19 other
+# names of this group read ह्रींकार.
+NAMAVALI_TYPO_FIXES = {285: (('ह्रींकरमणि', 'ह्रींकारमणि'), ('hrīṃkaramaṇi', 'hrīṃkāramaṇi'))}
 # Hardik's rule (CLAUDE.md): never show the mantra as an ordered sequence. Fifteen
 # English meanings ended by naming their letter's position in it; that clause goes.
 POSITION_CLAUSE = re.compile(r'\s*[-–]+\s*(?:-\s*)?(?:(?:this|it)\s+is\s+(?:also\s+)?)?the\s+\w+(?:\s+and\s+last)?'
@@ -530,6 +549,16 @@ POSITION_CLAUSE = re.compile(r'\s*[-–]+\s*(?:-\s*)?(?:(?:this|it)\s+is\s+(?:al
 
 
 def apply_audit_fixes(names):
+    for n in names:
+        num = n["number"]
+        if num in NOMINATIVE_FIXES:
+            n["devanagari"], n["iast"] = NOMINATIVE_FIXES[num]
+        if num in NAMAVALI_TYPO_FIXES:
+            (dv_old, dv_new), (ia_old, ia_new) = NAMAVALI_TYPO_FIXES[num]
+            for k, old, new in (("devanagariDative", dv_old, dv_new), ("namavaliDevanagari", dv_old, dv_new),
+                                ("iastDative", ia_old, ia_new), ("namavaliIast", ia_old, ia_new)):
+                assert old in n[k], (num, k)
+                n[k] = n[k].replace(old, new)
     changed = [n["number"] for n in names if POSITION_CLAUSE.search(n["meaning"])]
     assert changed == [1, 21, 41, 61, 81, 101, 121, 141, 161, 181, 201, 221, 241, 261, 281], changed
     for n in names:

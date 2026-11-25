@@ -1033,8 +1033,8 @@ const TRISHATI_DATA = {
     },
     {
       "number": 74,
-      "devanagari": "लतातनू",
-      "iast": "latātanū",
+      "devanagari": "लतातनु",
+      "iast": "latātanu",
       "english": "Lathathanu",
       "meaning": "She who has a soft body of a climbing plant (tendril)",
       "syllable": 3,
@@ -1706,16 +1706,16 @@ const TRISHATI_DATA = {
     {
       "number": 122,
       "devanagari": "सर्वज्ञा",
-      "iast": "sarvaGYā",
+      "iast": "sarvajñā",
       "english": "Sar vagna",
       "meaning": "She who knows everything",
       "syllable": 6,
       "kuta": 1,
       "verse": 24,
       "devanagariDative": "सर्वज्ञायै",
-      "iastDative": "sarvaGYāyai",
+      "iastDative": "sarvajñāyai",
       "namavaliDevanagari": "ॐ सर्वज्ञायै नमः",
-      "namavaliIast": "oṁ sarvaGYāyai namaḥ"
+      "namavaliIast": "oṁ sarvajñāyai namaḥ"
     },
     {
       "number": 123,
@@ -1943,8 +1943,8 @@ const TRISHATI_DATA = {
     },
     {
       "number": 139,
-      "devanagari": "सर्वमात्रे",
-      "iast": "sarvamātre",
+      "devanagari": "सर्वमाता",
+      "iast": "sarvamātā",
       "english": "Sarva maatha",
       "meaning": "She who is the mother of everybody (She who is the end of reasoning in all)",
       "syllable": 6,
@@ -2069,8 +2069,8 @@ const TRISHATI_DATA = {
     },
     {
       "number": 148,
-      "devanagari": "करभोरू",
-      "iast": "karabhorū",
+      "devanagari": "करभोरु",
+      "iast": "karabhoru",
       "english": "Kara bhoru",
       "meaning": "She who has thighs like the elephant’s trunk",
       "syllable": 7,
@@ -2602,16 +2602,16 @@ const TRISHATI_DATA = {
     {
       "number": 186,
       "devanagari": "लंघ्येतराज्ञा",
-      "iast": "laṃghyetarāGYā",
+      "iast": "laṃghyetarājñā",
       "english": "Langye tharagna",
       "meaning": "She who does not obey others orders or She who gives orders which cannot be disobeyed",
       "syllable": 9,
       "kuta": 1,
       "verse": 35,
       "devanagariDative": "लंघ्येतराज्ञायै",
-      "iastDative": "laṃghyetarāGYāyai",
+      "iastDative": "laṃghyetarājñāyai",
       "namavaliDevanagari": "ॐ लंघ्येतराज्ञायै नमः",
-      "namavaliIast": "oṁ laṃghyetarāGYāyai namaḥ"
+      "namavaliIast": "oṁ laṃghyetarājñāyai namaḥ"
     },
     {
       "number": 187,
@@ -2853,7 +2853,7 @@ const TRISHATI_DATA = {
     },
     {
       "number": 204,
-      "devanagari": "ह्रींशिखामणी",
+      "devanagari": "ह्रींशिखामणि",
       "iast": "hrīṃśikhāmaṇi",
       "english": "Hrim Shikhamani",
       "meaning": "She who wears “hrim” in her head",
@@ -3679,8 +3679,8 @@ const TRISHATI_DATA = {
     },
     {
       "number": 263,
-      "devanagari": "लब्धधिी",
-      "iast": "labdhadhiye",
+      "devanagari": "लब्धधी",
+      "iast": "labdhadhī",
       "english": "Labhdha di",
       "meaning": "She who can be got known by wisdom",
       "syllable": 13,
@@ -3931,7 +3931,7 @@ const TRISHATI_DATA = {
     },
     {
       "number": 281,
-      "devanagari": "ह्रींकारमूर्ती",
+      "devanagari": "ह्रींकारमूर्ति",
       "iast": "hrīṃkāramūrti",
       "english": "Hrimkara moorthi",
       "meaning": "She who is the personification of the sound “hrim”",
@@ -3987,17 +3987,17 @@ const TRISHATI_DATA = {
     },
     {
       "number": 285,
-      "devanagari": "ह्रींकरमणिदीपार्चिषे",
-      "iast": "hrīṃkaramaṇidīpārciṣe",
+      "devanagari": "ह्रींकारमणिदीपार्चि",
+      "iast": "hrīṃkāramaṇidīpārci",
       "english": "Hrimkara mani deeparchi",
       "meaning": "She who is the light of the ornamental lamp called “hrim”",
       "syllable": 14,
       "kuta": 2,
       "verse": 55,
-      "devanagariDative": "ह्रींकरमणिदीपार्चिषे",
-      "iastDative": "hrīṃkaramaṇidīpārciṣe",
-      "namavaliDevanagari": "ॐ ह्रींकरमणिदीपार्चिषे नमः",
-      "namavaliIast": "oṁ hrīṃkaramaṇidīpārciṣe namaḥ"
+      "devanagariDative": "ह्रींकारमणिदीपार्चिषे",
+      "iastDative": "hrīṃkāramaṇidīpārciṣe",
+      "namavaliDevanagari": "ॐ ह्रींकारमणिदीपार्चिषे नमः",
+      "namavaliIast": "oṁ hrīṃkāramaṇidīpārciṣe namaḥ"
     },
     {
       "number": 286,
@@ -4015,7 +4015,7 @@ const TRISHATI_DATA = {
     },
     {
       "number": 287,
-      "devanagari": "ह्रींकारपेटकमणी",
+      "devanagari": "ह्रींकारपेटकमणि",
       "iast": "hrīṃkārapeṭakamaṇi",
       "english": "Hrimkara petaka mani",
       "meaning": "She who is the pearl locked in the box called “hrim”",
@@ -4071,7 +4071,7 @@ const TRISHATI_DATA = {
     },
     {
       "number": 291,
-      "devanagari": "ह्रींकारशुक्तिका मुक्तामणी",
+      "devanagari": "ह्रींकारशुक्तिका मुक्तामणि",
       "iast": "hrīṃkāraśuktikā muktāmaṇi",
       "english": "Hrimkara shukthika mukthamani",
       "meaning": "She who is the pearl found in the oyster shell called “hrim”",
@@ -4113,8 +4113,8 @@ const TRISHATI_DATA = {
     },
     {
       "number": 294,
-      "devanagari": "ह्रींकारवेदोपनिषदे",
-      "iast": "hrīṃkāravedopaniṣade",
+      "devanagari": "ह्रींकारवेदोपनिषत्",
+      "iast": "hrīṃkāravedopaniṣat",
       "english": "Hrimkara vedhoupanishad",
       "meaning": "She who is the upanishad placed in the top of Veda called “hrim”",
       "syllable": 14,
